@@ -33,4 +33,4 @@ class DataEnricher:
     def to_csv(self, path: str):
         enriched_df = self.enrich()
         enriched_df.to_csv(path, index=False)
-        print(f"✅ Enriched data saved to {path}")
+        print(f"Enriched data saved to {path}")
