@@ -1,5 +1,7 @@
 import pandas as pd
 import requests
+import json
+from pandas import json_normalize
 
 api_url_products = 'https://fakestoreapi.com/products'
 api_url_users = 'https://fakestoreapi.com/users'
@@ -18,5 +20,10 @@ users = response_users.json()
 df_read_products = pd.DataFrame(products)
 df_read_users = pd.DataFrame(users)
 
+print(df_read_products.head())
+print(df_read_users.head())
+
+df_read_products = json_normalize(products)
+df_read_users = json_normalize(users)
 print(df_read_products.head())
 print(df_read_users.head())
