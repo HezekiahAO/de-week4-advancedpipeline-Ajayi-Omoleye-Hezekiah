@@ -27,3 +27,10 @@ df_read_products = json_normalize(products)
 df_read_users = json_normalize(users)
 print(df_read_products.head())
 print(df_read_users.head())
+
+
+# LEFT JOIN: keep all products, add matching seller info
+
+
+left_join_product = pd.merge(products, users, on= 'user_id', how='left', suffixes=('_product', '_users'))
+print(df_read_products.columns)    
