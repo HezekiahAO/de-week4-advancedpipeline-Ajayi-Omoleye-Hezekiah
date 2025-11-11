@@ -23,14 +23,25 @@ df_read_users = pd.DataFrame(users)
 print(df_read_products.head())
 print(df_read_users.head())
 
-df_read_products = json_normalize(products)
-df_read_users = json_normalize(users)
+df_products = pd.json_normalize(products)  # Normalize nested JSON data for products
+df_users = pd.json_normalize(users)
 print(df_read_products.head())
 print(df_read_users.head())
 
 
 # LEFT JOIN: keep all products, add matching seller info
+# Products and Users both have 'id' columns. We join on matching IDs.
+# This is a simple positional join since there's no actual seller_id field.
+left_join_product = pd.merge(
+    df_read_products, 
+    df_read_users, 
+    left_on='id', 
+    right_on='id', 
+    how='left', 
+    suffixes=('_product', '_user')
+)
+print("Merged result:")
+print(left_join_product.head())
 
 
-left_join_product = pd.merge(products, users, on= 'user_id', how='left', suffixes=('_product', '_users'))
-print(df_read_products.columns)    
+
