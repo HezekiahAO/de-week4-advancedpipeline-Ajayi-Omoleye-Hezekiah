@@ -1,1 +1,4 @@
+**Advanced Pipeline**
+
 A pipeline that fetches data from multiple related API endpoints, handles pagination, enriches the primary dataset, and runs based on a configuration file. A project emphasizes the skills needed for real-world ETL (Extract, Transform, Load) tasks.
+
